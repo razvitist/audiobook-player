@@ -23,6 +23,7 @@ Built with **Vite · TypeScript · React · Tailwind CSS · shadcn/ui**.
 - **Cover art** — from an embedded tag or a `cover`/`folder` image in the imported folder, with a generated gradient fallback.
 - **Chapter list** with a live "now playing" equalizer indicator.
 - **OS media controls** via the Media Session API (lock screen / media keys).
+- **Keeps the screen awake** while playing (Screen Wake Lock API), re-acquiring when you return to the tab.
 - **Keyboard shortcuts** and a responsive, theme-aware (dark by default) design.
 
 ### ⌨️ Keyboard shortcuts

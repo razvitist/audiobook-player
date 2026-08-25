@@ -2,6 +2,7 @@ import * as React from "react";
 import { useLibrary, currentBook } from "@/store/useLibrary";
 import { getBlob } from "@/lib/db";
 import { currentChapterIndex } from "@/lib/chapters";
+import { useWakeLock } from "@/hooks/useWakeLock";
 
 interface AudioController {
   audioRef: React.RefObject<HTMLAudioElement>;
@@ -40,6 +41,10 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   const volume = useLibrary((s) => s.volume);
   const muted = useLibrary((s) => s.muted);
   const playbackRate = useLibrary((s) => s.playbackRate);
+
+  // Keep the screen awake while audio is playing.
+  const isPlaying = useLibrary((s) => s.isPlaying);
+  useWakeLock(isPlaying);
 
   // --- Load the active track's blob and wire it into the single <audio>. ---
   React.useEffect(() => {
